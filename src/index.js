@@ -19,6 +19,11 @@ function eventCompiler(opts) {
       moduleIds: true
     }
 
+    for (var key in opts) {
+      if (key === 'modules') continue;
+      babelOpts[key] = opts[key];
+    }
+
     if (opts.modules !== 'common') {
       var modulePath = event.projectPath.replace(/\.js$/, '')
       if (opts.getModulePath)
